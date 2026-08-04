@@ -3,7 +3,7 @@ import org.apache.commons.dbutils.handlers.ScalarHandler;
 import java.sql.DriverManager;
 
 public class DbHelper {
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/app";
+    private static final String DB_URL = "jdbc:mysql://185.119.57.164:3306/app";
     private static final String DB_USER = "vasya";
     private static final String DB_PASS = "pass";
 
