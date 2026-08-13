@@ -1,9 +1,12 @@
 package page;
 
 import com.codeborne.selenide.SelenideElement;
-import static com.codeborne.selenide.Condition.visible;
+import org.openqa.selenium.Keys;
+import static com.codeborne.selenide.Condition.enabled;
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Condition.disabled;
 
 public class LoginPage {
     private SelenideElement loginInput = $("[data-test-id=login] input");
@@ -12,9 +15,9 @@ public class LoginPage {
     private SelenideElement errorNotification = $("[data-test-id=error-notification]");
 
     private void sendLoginForm(String login, String password) {
-        loginInput.clear();
+        loginButton.shouldBe(enabled);
+
         loginInput.setValue(login);
-        passwordInput.clear();
         passwordInput.setValue(password);
         loginButton.click();
     }
@@ -26,17 +29,23 @@ public class LoginPage {
     public VerificationPage validLogin(String login, String password) {
         sendLoginForm(login, password);
         VerificationPage page = new VerificationPage();
-        page.waitUntilLoaded();
         return page;
     }
 
-    public void verifyErrorVisible() {
+    public void verifyErrorMessage(String expectedText) {
         errorNotification.shouldBe(visible);
-        errorNotification.shouldHave(text("Неверно указан логин или пароль"));
+        errorNotification.shouldHave(text(expectedText));
     }
 
-    public void verifyUserBlocked() {
+    public void verifyLoginButtonIsDisabled() {
+        loginButton.shouldBe(disabled);
+    }
+
+    public void waitErrorNotification() {
         errorNotification.shouldBe(visible);
-        errorNotification.shouldHave(text("блокирован"));
+    }
+    public void verifyInvalidLoginError() {
+        errorNotification.shouldBe(visible);
+        errorNotification.shouldHave(text("Неверно указан логин или пароль"));
     }
 }
