@@ -17,8 +17,12 @@ public class LoginPage {
     private void sendLoginForm(String login, String password) {
         loginButton.shouldBe(enabled);
 
+        loginInput.clear();
         loginInput.setValue(login);
+
+        passwordInput.clear();
         passwordInput.setValue(password);
+
         loginButton.click();
     }
 
@@ -43,9 +47,5 @@ public class LoginPage {
 
     public void waitErrorNotification() {
         errorNotification.shouldBe(visible);
-    }
-    public void verifyInvalidLoginError() {
-        errorNotification.shouldBe(visible);
-        errorNotification.shouldHave(text("Неверно указан логин или пароль"));
     }
 }

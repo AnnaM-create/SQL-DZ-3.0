@@ -30,7 +30,7 @@ public class DataHelper {
     }
 
     public static VerificationCode getVerificationCode() {
-        String code = DbHelper.getVerificationCode(); // передаем логин васи
+        String code = DbHelper.getVerificationCode();
         return new VerificationCode(code);
     }
 }

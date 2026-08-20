@@ -1,15 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="test.LoginTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-08-13T18:57:24.355Z" hostname="WIN-L30P5MLFCLJ" time="4.638">
+<testsuite name="test.LoginTest" tests="2" skipped="0" failures="1" errors="0" timestamp="2026-08-16T18:50:11.732Z" hostname="WIN-L30P5MLFCLJ" time="9.586">
   <properties/>
-  <testcase name="shouldBeBlockedAfterThreeInvalidAttempts()" classname="test.LoginTest" time="3.365"/>
-  <testcase name="shouldLoginSuccessfully()" classname="test.LoginTest" time="1.261"/>
+  <testcase name="shouldBeBlockedAfterThreeInvalidAttempts()" classname="test.LoginTest" time="7.862">
+    <failure message="com.codeborne.selenide.ex.ElementShould: Element should be disabled {[data-test-id=action-login]}&#13;&#10;Element: '&lt;button class=&quot;button button_view_extra button_size_m button_hovered button_theme_alfa-on-white&quot; data-test-id=&quot;action-login&quot; role=&quot;button&quot; type=&quot;button&quot;&gt; Продолжить&lt;/button&gt;'&#13;&#10;Actual value: enabled&#13;&#10;Screenshot: file:/C:/Users/user/Desktop/SQL-DZ/build/reports/tests/1786906219467.0.png&#13;&#10;Page source: file:/C:/Users/user/Desktop/SQL-DZ/build/reports/tests/1786906219467.0.html&#13;&#10;Timeout: 4 s." type="com.codeborne.selenide.ex.ElementShould">Element should be disabled {[data-test-id=action-login]}
+Element: '&lt;button class=&quot;button button_view_extra button_size_m button_hovered button_theme_alfa-on-white&quot; data-test-id=&quot;action-login&quot; role=&quot;button&quot; type=&quot;button&quot;&gt; Продолжить&lt;/button&gt;'
+Actual value: enabled
+Screenshot: file:/C:/Users/user/Desktop/SQL-DZ/build/reports/tests/1786906219467.0.png
+Page source: file:/C:/Users/user/Desktop/SQL-DZ/build/reports/tests/1786906219467.0.html
+Timeout: 4 s.
+	at com.codeborne.selenide.impl.WebElementSource.handleError(WebElementSource.java:149)
+	at com.codeborne.selenide.impl.WebElementSource.checkConditionAndReturnElement(WebElementSource.java:127)
+	at com.codeborne.selenide.impl.WebElementSource.checkCondition(WebElementSource.java:104)
+	at com.codeborne.selenide.commands.Should.execute(Should.java:30)
+	at com.codeborne.selenide.commands.Should.execute(Should.java:14)
+	at com.codeborne.selenide.commands.Commands.execute(Commands.java:163)
+	at com.codeborne.selenide.impl.SelenideElementProxy.dispatchAndRetry(SelenideElementProxy.java:132)
+	at com.codeborne.selenide.impl.SelenideElementProxy.invoke(SelenideElementProxy.java:84)
+	at jdk.proxy3/jdk.proxy3.$Proxy18.shouldBe(Unknown Source)
+	at page.LoginPage.verifyLoginButtonIsDisabled(LoginPage.java:45)
+	at test.LoginTest.shouldBeBlockedAfterThreeInvalidAttempts(LoginTest.java:58)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+</failure>
+  </testcase>
+  <testcase name="shouldLoginSuccessfully()" classname="test.LoginTest" time="1.712"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[SLF4J: No SLF4J providers were found.
 SLF4J: Defaulting to no-operation (NOP) logger implementation
 SLF4J: See https://www.slf4j.org/codes.html#noProviders for further details.
-авг. 13, 2026 9:57:25 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+авг. 16, 2026 9:50:13 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find CDP implementation matching 151
-авг. 13, 2026 9:57:25 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+авг. 16, 2026 9:50:13 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
 WARNING: Unable to find version of CDP to use for 151.0.7922.109. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.11.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
 ]]></system-err>
 </testsuite>

@@ -29,8 +29,9 @@ public class DbHelper {
         var runner = new QueryRunner();
         try (var conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS)) {
             runner.update(conn, "DELETE FROM card_transactions;");
+            runner.update(conn, "DELETE FROM cards;");
             runner.update(conn, "DELETE FROM auth_codes;");
-            runner.update(conn, "UPDATE users SET status = 'active';");
+            runner.update(conn, "DELETE FROM users;");
         } catch (SQLException e) {
             throw new RuntimeException("Ошибка при очистке БД", e);
         }

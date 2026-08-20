@@ -20,9 +20,10 @@ public class LoginTest {
     }
 
     @AfterAll
-    static void cleanUp() throws Exception {
+    static void cleanUp() {
         DbHelper.cleanDatabase();
     }
+
 
     @Test
     void shouldLoginSuccessfully() throws Exception {
@@ -40,16 +41,22 @@ public class LoginTest {
 
     @Test
     void shouldBeBlockedAfterThreeInvalidAttempts() {
-        var authInfo = DataHelper.getInvalidAuthInfo();
+        var invalidAuthInfo = DataHelper.getInvalidAuthInfo();
+        var validAuthInfo = DataHelper.getValidAuthInfo();
         var loginPage = new LoginPage();
 
-        loginPage.invalidLogin(authInfo.getLogin(), authInfo.getPassword());
-        loginPage.verifyInvalidLoginError();
 
-        loginPage.invalidLogin(authInfo.getLogin(), authInfo.getPassword());
-        loginPage.verifyInvalidLoginError();
+        loginPage.invalidLogin(invalidAuthInfo.getLogin(), invalidAuthInfo.getPassword());
+        loginPage.verifyErrorMessage("Неверно указан логин или пароль");
 
-        loginPage.invalidLogin(authInfo.getLogin(), authInfo.getPassword());
-        loginPage.verifyInvalidLoginError();
+        loginPage.invalidLogin(invalidAuthInfo.getLogin(), invalidAuthInfo.getPassword());
+        loginPage.verifyErrorMessage("Неверно указан логин или пароль");
+
+        loginPage.invalidLogin(invalidAuthInfo.getLogin(), invalidAuthInfo.getPassword());
+        loginPage.verifyErrorMessage("Неверно указан логин или пароль");
+
+        loginPage.invalidLogin(validAuthInfo.getLogin(), validAuthInfo.getPassword());
+
+        loginPage.verifyErrorMessage("блокирован");
     }
 }
